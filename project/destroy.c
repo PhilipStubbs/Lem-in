@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destory.c                                          :+:      :+:    :+:   */
+/*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:51:07 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/23 11:45:46 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/23 17:23:29 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	destroy(t_hold **node, char **str)
+void	destroy(t_hold **node)
 {
-	if ((*str))
-		free(*str);
+	free((*node)->str);
 	free((*node)->room);
 	free(*node);
 	exit(1);
 }
 
-void	destroyerror(t_hold **node, char **str)
+void	destroyerror(t_hold **node)
 {
-	if (*(str))
-		free(*str);
+	free((*node)->str);
 	free((*node)->room);
 	free(*node);
 	ERROR;

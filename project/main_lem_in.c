@@ -6,16 +6,21 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:31:17 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/23 10:15:06 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/23 11:40:50 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int	main(int arc, char **arv)
+int	main(void)
 {
 	t_hold *node;
+	char *str;
 
+	get_next_line(0, &str);
 	node = malloctime();
-	destory(&node);
+	getinfo(node, str);
+
+	// str = NULL;
+	destory(&node, &str);
 }

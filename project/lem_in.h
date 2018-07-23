@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/23 10:04:56 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/23 11:45:57 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef	struct		s_hold
 
 t_hold				*malloctime(void);
 int					getinfo(t_hold *node, char *str);
-void				destory(t_hold **node);
-void				destoryerror(t_hold **node);
+void				destroy(t_hold **node, char **str);
+void				destroyerror(t_hold **node, char **str);
 
 
 #endif

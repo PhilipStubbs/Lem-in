@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:06:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/23 10:23:17 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/23 11:41:18 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,20 @@ void	antamount(t_hold *node, char *str)
 	int	i;
 
 	i = 0;
-	if (isstart == 0)
-		destoryerror(&node);
+	if (isstart(str) == 0)
+		destoryerror(&node, &str);
 	while (i < 10)
 	{
-		if (ft_strstr(str, itoa(i)) != NULL)
+		if (ft_strstr(str, ft_itoa(i)) != NULL)
 			break ;
-		if (i == 9 && ft_strstr(str, itoa(i)) == NULL)
-			destoryerror(&node);
+		if (i == 9 && ft_strstr(str, ft_itoa(i)) == NULL)
+			destoryerror(&node, &str);
 		i++;
 	}
 	i = 0;
 	while (!(str[i] >= '0' && str[i] <= '9'))
 		i++;
+	write(1, "OUT\n", 4);
 	node->ants = atol(str + i);
 }
 
@@ -46,19 +47,20 @@ void	startroom(t_hold *node, char *str)
 {
 	while (isstart(str) == -1)
 	{
-		get_next_line(1, &str);
+		get_next_line(0, &str);
 		if (isstart(str) == 1)
-			destoryerror(&node);
+		{
+			printf("inside starroom");
+			destoryerror(&node, &str);
+		}
 	}
 	node->start = ft_strdup(str);
 }
 
 int		getinfo(t_hold *node, char *str)
 {
-	char	*str;
-
-	get_next_line(1, &str);
 	antamount(node, str);
+	printf("[%s]\n", str);
 	startroom(node, str);
 	return (1);
 }

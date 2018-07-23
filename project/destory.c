@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_lem_in.c                                      :+:      :+:    :+:   */
+/*   destory.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/23 08:31:17 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/23 10:15:06 by pstubbs          ###   ########.fr       */
+/*   Created: 2018/07/23 09:51:07 by pstubbs           #+#    #+#             */
+/*   Updated: 2018/07/23 10:04:38 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int	main(int arc, char **arv)
+void	destory(t_hold **node)
 {
-	t_hold *node;
+	free((*node)->room);
+	free(*node);
+	exit(1);
+}
 
-	node = malloctime();
-	destory(&node);
+void	destoryerror(t_hold **node)
+{
+	free((*node)->room);
+	free(*node);
+	ERROR;
+	exit(1);
 }

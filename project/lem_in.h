@@ -6,15 +6,39 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/23 08:09:51 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/23 10:04:56 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
-# include "../libft/libft.h"
+# include "libft/libft.h"
+# include <stdio.h>
 
+# define ERROR ft_putendl_fd("Error", 2);
+
+typedef	struct		s_room
+{
+	char			*name;
+	int				x;
+	int				y;
+	struct s_room	*next;
+}					t_room;
+
+typedef	struct		s_hold
+{
+	t_room			*room;
+	int				totalrooms;
+	int				ants;
+	char			*start;
+	char			*end;
+}					t_hold;
+
+t_hold				*malloctime(void);
+int					getinfo(t_hold *node, char *str);
+void				destory(t_hold **node);
+void				destoryerror(t_hold **node);
 
 
 #endif

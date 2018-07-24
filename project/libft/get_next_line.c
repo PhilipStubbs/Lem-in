@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pstubbs <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 10:19:04 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/05/30 10:19:06 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/24 13:45:09 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ int			get_next_line(const int fd, char **line)
 	gnlrunthrough(buff, node, line);
 	if (node->gnlr == 0 && node->gnlo == 0 && node->ret[0] == '\0')
 	{
-		node->ret = NULL;
-		node->overflow = NULL;
+		free(node->ret);
+		free(node->overflow);
 		return (0);
 	}
 	ft_strclr(node->ret);

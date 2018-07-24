@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 08:15:14 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/23 17:08:04 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/24 13:24:36 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <fcntl.h>
-# define BUFF_SIZE 1
+# define BUFF_SIZE 2
 
 typedef	struct		s_list
 {

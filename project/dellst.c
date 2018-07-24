@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_lem_in.c                                      :+:      :+:    :+:   */
+/*   dellst.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/23 08:31:17 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/24 12:20:57 by pstubbs          ###   ########.fr       */
+/*   Created: 2018/07/24 09:41:06 by pstubbs           #+#    #+#             */
+/*   Updated: 2018/07/24 10:54:15 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int	main(void)
+void	dellst(t_room **lst)
 {
-	t_hold *node;
 
-	node = malloctime();
-	getinfo(node);
-
-
-	// printf("ANTS = %d\n", node->ants);
-	// printf("START = %s\n", node->start->name);
-	// printf("END = %s\n", node->end->name);
-	// while (node->room != NULL)
-	// {
-	// 	printf("%s x:%d y:%d\n", node->room->name, node->room->x, node->room->y);
-	// 	node->room = node->room->next;
-	// }
-	// printf("Totalrooms = %d\n", node->totalrooms);
-
-	destroy(&node);
+	while ((*lst)->next != NULL)
+	{
+		write(1, "x\n", 2);
+		(*lst) = (*lst)->next;
+		free((*lst)->name);
+		write(1, "x\n", 2);
+		free((*lst));
+	}
 }
+
+
+		// while ((*alst) != NULL)
+		// {
+		// 	del((*alst)->content, (*alst)->content_size);
+		// 	free(*alst);
+		// 	(*alst) = (*alst)->next;
+		// }

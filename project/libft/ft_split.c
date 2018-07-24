@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pstubbs <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/16 13:33:38 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/06/16 13:33:40 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/24 09:07:35 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	ft_strpull(int w, char **ret, char *str)
 	while (str[len] && ft_isspace(str[len]) == 0)
 		len++;
 	ret[w] = (char*)malloc(len + 1);
-	while (i <= len)
+	while (i < len)
 	{
 		ret[w][i] = *str;
 		i++;

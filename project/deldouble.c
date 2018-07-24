@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_lem_in.c                                      :+:      :+:    :+:   */
+/*   deldouble.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/23 08:31:17 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/24 12:20:57 by pstubbs          ###   ########.fr       */
+/*   Created: 2018/07/24 09:56:32 by pstubbs           #+#    #+#             */
+/*   Updated: 2018/07/24 10:59:21 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int	main(void)
+void deldouble(char ***str)
 {
-	t_hold *node;
+	int	i;
 
-	node = malloctime();
-	getinfo(node);
-
-
-	// printf("ANTS = %d\n", node->ants);
-	// printf("START = %s\n", node->start->name);
-	// printf("END = %s\n", node->end->name);
-	// while (node->room != NULL)
-	// {
-	// 	printf("%s x:%d y:%d\n", node->room->name, node->room->x, node->room->y);
-	// 	node->room = node->room->next;
-	// }
-	// printf("Totalrooms = %d\n", node->totalrooms);
-
-	destroy(&node);
+	i = 0;
+	while (str[0][i] != NULL)
+	{
+		i++;
+	}
+	i--;
+	while (i >= 0)
+	{
+		free(str[0][i--]);
+	}
+	free(*str);
 }

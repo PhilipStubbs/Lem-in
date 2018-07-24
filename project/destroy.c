@@ -6,20 +6,19 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:51:07 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/24 12:19:16 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/24 18:28:51 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 void	destroy(t_hold **node)
-{
-	free((*node)->rawstr);
-	free((*node)->str);
-	// free((*node)->start->name);
-	// free((*node)->start);
-	if ((*node)->room)
-		dellst(&(*node)->room);
+{	
+	if ((*node)->rawstr)
+		free((*node)->rawstr);
+	if ((*node)->str)
+		free((*node)->str);
+
 	if ((*node)->start)
 	{
 		free((*node)->start->name);
@@ -30,27 +29,33 @@ void	destroy(t_hold **node)
 		free((*node)->end->name);
 		free((*node)->end);
 	}
-	// free((*node)->room);
+	
+	// free((*node)->room->name);
+	free((*node)->room);
+	write(1, "X\n", 2);
 	free(*node);
 	exit(1);
 }
-
+	
 void	destroyerror(t_hold **node)
 {
-	free((*node)->rawstr);
-	free((*node)->str);
-	dellst(&(*node)->room);
-	if ((*node)->start != NULL)
+	if ((*node)->rawstr)
+		free((*node)->rawstr);
+	if ((*node)->str)
+		free((*node)->str);
+
+	if ((*node)->start)
 	{
 		free((*node)->start->name);
 		free((*node)->start);
 	}
-	if ((*node)->end != NULL)
+	if ((*node)->end)
 	{
-	free((*node)->end->name);
-	free((*node)->end);
+		free((*node)->end->name);
+		free((*node)->end);
 	}
-	// free((*node)->room);
+	// free((*node)->room->name);
+	free((*node)->room);
 	free(*node);
 	ERROR;
 	exit(1);

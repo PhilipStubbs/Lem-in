@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:31:17 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/24 13:31:09 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/24 18:39:31 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ int	main(void)
 	// printf("ANTS = %d\n", node->ants);
 	// printf("START = %s\n", node->start->name);
 	// printf("END = %s\n", node->end->name);
-	// while (node->room != NULL)
+	// t_room *tmp = node->room;
+	// while (tmp != NULL)
 	// {
-	// 	printf("%s x:%d y:%d\n", node->room->name, node->room->x, node->room->y);
-	// 	node->room = node->room->next;
+	// 	printf("%s x:%d y:%d\n", tmp->name, tmp->x, tmp->y);
+	// 	tmp = tmp->next;
 	// }
-	// printf("Totalrooms = %d\n", node->totalrooms);
-
+	printf("Totalrooms = %d\n", node->totalrooms);
+	dellst(&(node)->room);
 	destroy(&node);
 }

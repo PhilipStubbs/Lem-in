@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 09:56:32 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/24 12:59:48 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/24 16:54:03 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,3 @@ void deldouble(char ***str)
 	}
 	free(*str);
 }
-
-
-// void deldouble(char ***str)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	// while (str[0][i] != NULL)
-// 	// {
-// 	// 	i++;
-// 	// }
-// 	while (str[0][i])
-// 	{
-// 		i++;
-// 		// free(str[0][i--]);
-// 	}
-// 	free(*str);
-// }

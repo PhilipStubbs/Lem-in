@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:06:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/24 13:50:20 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/24 18:43:34 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,21 @@
 
 int		isroom(char *str)
 {
-	int		space;
-	int		i;
+	char	**list;
+	int		size;
 
-	space = 0;
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == ' ')
-			space++;
-		i++;
-	}
-	if (space != 2)
+	list = ft_split(str);
+	size = 0;
+	while (list[size] != NULL)
+		size++;
+	deldouble(&list);
+	if (size != 3)
 		return (-1);
 	return (3);
 }
 
 int		isstart(char *str)
 {
-
 	if ((ft_strstr(str, "start")) && (ft_strstr(str, "#")))
 		return (0);
 	else if (ft_strstr(str, "end") && ft_strstr(str, "#"))
@@ -127,14 +123,13 @@ void	setroom(t_hold *node)
 	lst = node->room;
 	tmp = (t_room*)ft_memalloc(sizeof(t_room));
 	tmp->name = ft_strdup(info[0]);
-	tmp->x = (atoi(info[1]));
-	tmp->y = (atoi(info[2]));
+	tmp->x = (ft_atoi(info[1]));
+	tmp->y = (ft_atoi(info[2]));
 	tmp->next = NULL;
 	while (lst->next != NULL)
 		lst = lst->next;
 	lst->next = tmp;
 	deldouble(&info);
-
 }
 
 void	findrooms(t_hold *node)
@@ -149,7 +144,7 @@ void	findrooms(t_hold *node)
 	}
 	// else if (islink(node->rawstr) == 2)
 		// setlink(node);
-	if (isroom(node->rawstr) == 3)
+	else if (isroom(node->rawstr) == 3)
 	{
 		setroom(node);
 	}
@@ -159,49 +154,52 @@ void	connectlinks(t_hold *node)
 {
 	t_room *stpoint;
 	t_room *enpoint;
+	t_room *list;
 
 	if (node->ants == 0 || node->start == NULL || node->end == NULL)
 		destroyerror(&node);
 	stpoint = node->start;
-	enpoint = node->end;
-	stpoint->next = node->room;
-	node->room = stpoint;
+	node->room->name = stpoint->name;
+	node->room->x = stpoint->x;
+	node->room->y = stpoint->y;
+	enpoint = (t_room*)ft_memalloc(sizeof(t_room));
+	list = node->room;
+	enpoint->name = node->end->name;
+	enpoint->x = node->end->x;
+	enpoint->y = node->end->y;
+	enpoint->next = NULL;
+	while(list->next != NULL)
+	{
+		printf("name%s\n", list->name);
+
+		list = list->next;
+	}
+	list->next = enpoint;
+	
+	// list = node->room;
+	// free(stpoint);
+	// free(enpoint);
+	// dellst(&list);
+	// free(list);
 }
 
 int		getinfo(t_hold *node)
 {
 	int		ret;
 	int		count;
-	char	*str;
 
 	count = 0;
-	(void)node;
-	// free(node->rawstr);
 	ret = 1;
-	node->rawstr = (char*)ft_memalloc(sizeof(char) * 10);
-	// ft_strclr(node->rawstr);
-	// ret = get_next_line(0, &str);
-	// while (ret != 0 && count <= 11)
-	// {
-		// ret = get_next_line(0, &str);
-
-		// free(str);
-
-		
-		// ret = get_next_line(0, &str);
-		// ft_strcpy(node->rawstr, str);
-		// free(str);
-
-		// if (count == 0)
-		// 	findants(node);
-		// findrooms(node);
+	while (ret != 0)
+	{
+		ret = get_next_line(0, &(node->rawstr));
+		if (count == 0)
+			findants(node);
+		findrooms(node);
 		count++;
-		
-	// 	ft_memdel((void**)&str);
-	// 	ft_strclr(node->rawstr);
-	// }
-	printf("count %d", count);
-	// connectlinks(node);
+		free(node->rawstr);
+	}
+	connectlinks(node);
 	// free(node->rawstr);
 	return (1);
 }

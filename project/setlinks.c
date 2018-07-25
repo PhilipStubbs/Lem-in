@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 09:57:56 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/25 10:43:53 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/25 12:02:01 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,25 +39,83 @@ int		matchinglink(char *name, char **list)
 	return (count);
 }
 
+int		doublesize(char **list)
+{
+	int	size;
+
+	size = 0;
+	while (list[size])
+		size++;
+	return (size);
+}
+
+void	printlinks(t_hold *node)
+{
+	t_room	*tmp;
+	int	i;
+
+	tmp = node->room;
+	while (tmp->next != NULL)
+	{	
+		i = 0;
+		
+
+		while (tmp->links[i])
+		{
+			printf("INIDEname %s | i %d | link [%s]\n",tmp->name, i, tmp->links[i]);
+			i++;
+		}
+		// printf("\n\n");
+		tmp = tmp->next;
+	}
+}
+
 void	setlinks(t_hold *node)
 {
 	t_room	*tmp;
 	char	**list;
 	int		num;
-	// int		i;
+	int		i;
+	int		n;
 	// int		start;
-	// int		l;
+	int		l;
 
+	
 	list = ft_split(node->rawlinks);
 	tmp = node->room;
 	while (tmp->next != NULL)
 	{
 		num = matchinglink(tmp->name, list);
-		printf("[%s] %d\n",tmp->name, num);
+		tmp->links = (char**)ft_memalloc(sizeof(char*) * num);
+		// printf("name [%s] size [%d]\n",tmp->name, num);
+		l = 0;
+		n = 0;
+		tmp->links[num] = NULL;
+		while (n < num)
+		{
+			l = 0;
+			while (list[l])
+			{
+				i = 0;
+				while (list[l][i] != '-' && list[l][i] != '\0')
+					i++;
+				// printf("[%s]\n", list[l] + i + 1);
+				if (ft_strncmp(tmp->name, list[l], i) == 0)
+				{
+					// tmp->links[n] = ft_strdup(list[l] + i + 1);
+					tmp->links[n] = ft_strsub(list[l], i + 1, ft_strlen(list[l]));
+					printf("name %s | n %d | link [%s]\n",tmp->name, n, tmp->links[n]);
+					n++;
+				}
+				l++;
+			}
+		}
+		
 		tmp = tmp->next;
 	}
 	deldouble(&list);
 	free(tmp);
+	printlinks(node);
 }
 
 

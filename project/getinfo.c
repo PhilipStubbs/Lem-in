@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:06:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/25 10:10:28 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/25 11:23:01 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,25 +187,26 @@ void	findrooms(t_hold *node)
 
 void	connectlinks(t_hold *node)
 {
-	t_room *stpoint;
 	t_room *enpoint;
 	t_room *list;
 
 	if (node->ants == 0 || node->start == NULL || node->end == NULL)
 		destroyerror(&node);
-	stpoint = node->start;
-	node->room->name = stpoint->name;
-	node->room->x = stpoint->x;
-	node->room->y = stpoint->y;
+	node->room->name = node->start->name;
+	node->room->x = node->start->x;
+	node->room->y = node->start->y;
+
+
 	enpoint = (t_room*)ft_memalloc(sizeof(t_room));
-	list = node->room;
 	enpoint->name = node->end->name;
 	enpoint->x = node->end->x;
 	enpoint->y = node->end->y;
 	enpoint->next = NULL;
+	list = node->room;
 	while (list->next != NULL)
 		list = list->next;
 	list->next = enpoint;
+	
 }
 
 int		getinfo(t_hold *node)
@@ -225,6 +226,6 @@ int		getinfo(t_hold *node)
 		free(node->rawstr);
 	}
 	connectlinks(node);
-	setlinks(node);
+	// setlinks(node);
 	return (1);
 }

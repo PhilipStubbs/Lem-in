@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:51:07 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/25 07:22:20 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/25 13:57:21 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	destroyerror(t_hold **node)
 		free((*node)->end->name);
 		free((*node)->end);
 	}
+	free((*node)->rawlinks);
 	// free((*node)->room->name);
 	free((*node)->room);
 	free(*node);

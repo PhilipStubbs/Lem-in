@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 09:57:56 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/25 12:02:01 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/25 13:42:08 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,27 +49,6 @@ int		doublesize(char **list)
 	return (size);
 }
 
-void	printlinks(t_hold *node)
-{
-	t_room	*tmp;
-	int	i;
-
-	tmp = node->room;
-	while (tmp->next != NULL)
-	{	
-		i = 0;
-		
-
-		while (tmp->links[i])
-		{
-			printf("INIDEname %s | i %d | link [%s]\n",tmp->name, i, tmp->links[i]);
-			i++;
-		}
-		// printf("\n\n");
-		tmp = tmp->next;
-	}
-}
-
 void	setlinks(t_hold *node)
 {
 	t_room	*tmp;
@@ -104,7 +83,7 @@ void	setlinks(t_hold *node)
 				{
 					// tmp->links[n] = ft_strdup(list[l] + i + 1);
 					tmp->links[n] = ft_strsub(list[l], i + 1, ft_strlen(list[l]));
-					printf("name %s | n %d | link [%s]\n",tmp->name, n, tmp->links[n]);
+					// printf("name %s | n %d | link [%s]\n",tmp->name, n, tmp->links[n]);
 					n++;
 				}
 				l++;
@@ -115,7 +94,6 @@ void	setlinks(t_hold *node)
 	}
 	deldouble(&list);
 	free(tmp);
-	printlinks(node);
 }
 
 

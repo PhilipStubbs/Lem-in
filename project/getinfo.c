@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:06:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/25 11:23:01 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/25 14:42:29 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int		isroom(char *str)
 
 int		isstart(char *str)
 {
-	if ((ft_strstr(str, "start")) && (ft_strstr(str, "#")))
+	if (ft_strstr(str, "#start"))
 		return (0);
-	else if (ft_strstr(str, "end") && ft_strstr(str, "#"))
+	else if (ft_strstr(str, "#end"))
 		return (1);
 	return (-1);
 }
@@ -126,9 +126,12 @@ void	setroom(t_hold *node)
 	tmp->x = (ft_atoi(info[1]));
 	tmp->y = (ft_atoi(info[2]));
 	tmp->next = NULL;
+	printf("[%s]\n",lst->name);
 	while (lst->next != NULL)
 		lst = lst->next;
 	lst->next = tmp;
+	lst = lst->next;
+	printf("here[%s]\n",lst->name);
 	deldouble(&info);
 }
 
@@ -185,30 +188,6 @@ void	findrooms(t_hold *node)
 		setroom(node);
 }
 
-void	connectlinks(t_hold *node)
-{
-	t_room *enpoint;
-	t_room *list;
-
-	if (node->ants == 0 || node->start == NULL || node->end == NULL)
-		destroyerror(&node);
-	node->room->name = node->start->name;
-	node->room->x = node->start->x;
-	node->room->y = node->start->y;
-
-
-	enpoint = (t_room*)ft_memalloc(sizeof(t_room));
-	enpoint->name = node->end->name;
-	enpoint->x = node->end->x;
-	enpoint->y = node->end->y;
-	enpoint->next = NULL;
-	list = node->room;
-	while (list->next != NULL)
-		list = list->next;
-	list->next = enpoint;
-	
-}
-
 int		getinfo(t_hold *node)
 {
 	int		ret;
@@ -225,7 +204,5 @@ int		getinfo(t_hold *node)
 		count++;
 		free(node->rawstr);
 	}
-	connectlinks(node);
-	// setlinks(node);
 	return (1);
 }

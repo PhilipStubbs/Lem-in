@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/25 10:27:27 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/25 14:01:16 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void				dellst(t_room **lst);
 void 				deldouble(char ***str);
 
 void				setlinks(t_hold *node);
+void				connectlinks(t_hold *node);
 
 
 #endif

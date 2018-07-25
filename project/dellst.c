@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 09:41:06 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/25 07:45:53 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/25 13:56:25 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	dellst(t_room **lst)
 		printf("%s\n", tmp->name);
 		(*lst) = (*lst)->next;
 		free(tmp->name);
+		deldouble(&(tmp)->links);
+		// free(tmp->name);
 		free(tmp);
 	}
 	tmp = (*lst);

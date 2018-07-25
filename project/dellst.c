@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 09:41:06 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/24 18:37:10 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/25 07:45:53 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	dellst(t_room **lst)
 	t_room *tmp;
 	int count;
 	
+	count = 0;
 	while ((*lst)->next != NULL)
 	{
 		count++;

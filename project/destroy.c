@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:51:07 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/24 18:28:51 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/25 07:22:20 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	destroy(t_hold **node)
 	free(*node);
 	exit(1);
 }
-	
+
 void	destroyerror(t_hold **node)
 {
 	if ((*node)->rawstr)

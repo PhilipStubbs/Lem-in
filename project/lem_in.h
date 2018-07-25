@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/24 17:10:13 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/25 10:27:27 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef	struct		s_room
 {
 	char			*name;
+	char			**links;
 	int				x;
 	int				y;
 	struct s_room	*next;
@@ -35,6 +36,7 @@ typedef	struct		s_hold
 	int				ants;
 	char			*rawstr;
 	char			*str;
+	char			*rawlinks;
 }					t_hold;
 
 t_hold				*malloctime(void);
@@ -43,6 +45,8 @@ void				destroy(t_hold **node);
 void				destroyerror(t_hold **node);
 void				dellst(t_room **lst);
 void 				deldouble(char ***str);
+
+void				setlinks(t_hold *node);
 
 
 #endif

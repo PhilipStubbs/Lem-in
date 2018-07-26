@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:29:34 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/25 14:25:53 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/26 11:16:25 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_hold	*malloctime(void)
 	ret->room = (t_room*)ft_memalloc(sizeof(t_room));
 	ret->room->x = 0;
 	ret->room->y = 0;
+	ret->room->v = 0;
 	ret->room->next = NULL;
 	ret->totalrooms = 0;
 	ret->ants = 0;

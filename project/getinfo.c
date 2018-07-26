@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:06:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/26 08:22:18 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/26 11:17:00 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ void	setroom(t_hold *node)
 	tmp->name = ft_strdup(info[0]);
 	tmp->x = (ft_atoi(info[1]));
 	tmp->y = (ft_atoi(info[2]));
+	tmp->v = 0;
 	tmp->next = NULL;
 	// printf("[%s]\n",lst->name);
 	while (lst->next != NULL)

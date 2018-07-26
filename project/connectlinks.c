@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 14:00:48 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/26 09:53:42 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/26 11:18:17 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ void	connectend(t_hold *node)
 	t_room *list;
 
 	list = node->room;
+	node->end->v = 0;
 	enpoint = (t_room*)ft_memalloc(sizeof(t_room));
 	enpoint->name = ft_strdup(node->end->name);
 	enpoint->x = node->end->x;
 	enpoint->y = node->end->y;
+	enpoint->v = 0;
 	enpoint->next = NULL;
 	while (list->next != NULL)
 		list = list->next;

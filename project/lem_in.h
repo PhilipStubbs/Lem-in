@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/25 14:01:16 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/26 10:05:14 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef	struct		s_room
 {
 	char			*name;
 	char			**links;
+	char			**prelinks;
 	int				x;
 	int				y;
 	struct s_room	*next;
@@ -34,6 +35,7 @@ typedef	struct		s_hold
 	t_room			*end;
 	int				totalrooms;
 	int				ants;
+	char			*nogo;
 	char			*rawstr;
 	char			*str;
 	char			*rawlinks;
@@ -44,10 +46,15 @@ int					getinfo(t_hold *node);
 void				destroy(t_hold **node);
 void				destroyerror(t_hold **node);
 void				dellst(t_room **lst);
-void 				deldouble(char ***str);
+
 
 void				setlinks(t_hold *node);
 void				connectlinks(t_hold *node);
+int					listsize(t_room *lst);
+
+char				*ft_strmerge(char *s1, char *s2);
+void 				deldouble(char ***str);
+int					doublesize(char **list);
 
 
 #endif

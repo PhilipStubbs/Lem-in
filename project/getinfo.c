@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:06:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/25 14:42:29 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/26 08:22:18 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,12 +126,12 @@ void	setroom(t_hold *node)
 	tmp->x = (ft_atoi(info[1]));
 	tmp->y = (ft_atoi(info[2]));
 	tmp->next = NULL;
-	printf("[%s]\n",lst->name);
+	// printf("[%s]\n",lst->name);
 	while (lst->next != NULL)
 		lst = lst->next;
 	lst->next = tmp;
 	lst = lst->next;
-	printf("here[%s]\n",lst->name);
+	// printf("here[%s]\n",lst->name);
 	deldouble(&info);
 }
 
@@ -140,6 +140,7 @@ int		islink(char *str)
 	int	i;
 
 	i = 0;
+
 	while (str[i])
 	{
 		if (str[i] == '-')
@@ -165,14 +166,20 @@ void	savelink(t_hold *node)
 		node->rawlinks = ft_strdup(node->rawstr);
 		flag = 1;
 	}
-	if (flag == 0)
+	if (flag == 0 && ft_strcmp(node->rawlinks, "") != 0)
 	{
-		tmp = ft_strjoin(node->rawlinks, " ");
+		// printf("[%s]\n", node->rawlinks);
+		// tmp = ft_strjoin(node->rawlinks, " ");
 		/*
 			free(node->rawlinks);
 		*/
-		node->rawlinks = ft_strjoin(tmp, node->rawstr);
-		free(tmp);
+		// if (tmp)
+			// free(tmp);
+		tmp = ft_strmerge(node->rawlinks, node->rawstr);
+		free(node->rawlinks);
+		node->rawlinks = tmp;
+		// write(1,"X\n",2); 
+		// node->rawlinks = ft_strjoin(tmp, node->rawstr);
 	}
 }
 

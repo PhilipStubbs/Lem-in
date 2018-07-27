@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 11:22:34 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/27 08:25:42 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/27 18:23:00 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	setvalues(t_hold *node, t_room *room, int v)
 {
 	int		i;
-	t_room	*tmp;
+	t_room	*lst;
+	t_room	*future;
 
 	i = 0;
 	if (node->room->v != 0)
@@ -25,22 +26,41 @@ void	setvalues(t_hold *node, t_room *room, int v)
 	// 	room->v = v;
 	// 	v++;
 	// }
-	while (room->links[i] != NULL)
+	future = NULL;
+	while (room->links[i])
 	{
-		tmp = node->room;
-		while (tmp->next != NULL)
+		lst = node->room;
+		while (ft_strcmp(lst->name, room->links[i]) != 0)
+				lst = lst->next;
+		if (lst->v == 0)
 		{
-			if (ft_strcmp(tmp->name, room->links[i]) == 0 && tmp->v == 0)
-			{
-				if (tmp->v == 0)
-					tmp->v = room->v + 1;
-				// if (tmp->next == NULL && room->links[i + 1] == NULL)
-					setvalues(node, tmp, v +1);
-			}
-			tmp = tmp->next;
+			lst->v = v + 1;
+			if (!(future))
+				future = lst;
 		}
 		i++;
 	}
+	setvalues(node, future, v);
+
+
+
+
+	// while (room->links[i] != NULL)
+	// {
+	// 	tmp = node->room;
+	// 	while (tmp->next != NULL)
+	// 	{
+	// 		if (ft_strcmp(tmp->name, room->links[i]) == 0 && tmp->v == 0)
+	// 		{
+	// 			if (tmp->v == 0)
+	// 				tmp->v = room->v + 1;
+	// 			// if (tmp->next == NULL && room->links[i + 1] == NULL)
+	// 				setvalues(node, tmp, v +1);
+	// 		}
+	// 		tmp = tmp->next;
+	// 	}
+	// 	i++;
+	// }
 }
 
 void	findpath(t_hold *node)

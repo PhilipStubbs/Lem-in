@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/27 12:20:34 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/27 18:15:55 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef	struct		s_hold
 	t_room			*end;
 	int				totalrooms;
 	int				ants;
-	char			*nogo;
+	char			*path;
 	char			*rawstr;
 	char			*str;
 	char			*rawlinks;

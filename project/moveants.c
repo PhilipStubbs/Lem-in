@@ -6,16 +6,27 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/27 10:53:09 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/27 13:16:02 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/27 18:23:50 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-// void	moveem(t_hold *node, char *str)
-// {
-
-// }
+void	moveem(t_hold *node, char *str)
+{
+	char	*tmp;
+	if (!node->path)
+	{
+		node->path = ft_strdup(str);
+		return ;
+	}
+	tmp = ft_strdup(node->path);
+	free(node->path);
+	node->path = ft_strmerge(tmp, str);
+	free(tmp);
+	// if (ft_strcmp(str, node->end->name) == 0)
+	// 	node->ants--;
+}
 
 void	moveants(t_hold *node)
 {
@@ -34,7 +45,7 @@ void	moveants(t_hold *node)
 		while (tmp->links[i])
 		{
 			lst = node->room;
-			while (ft_strcmp(lst->name, tmp->links[i]) != 0)
+			while (ft_strcmp(lst->name, tmp->links[i]) != 0 && ft_strcmp(tmp->name, tmp->links[i]) != 0)
 				lst = lst->next;
 			// printf("[%s]\n", l);
 			if (lst->v < score && lst->v != 0 && ft_strcmp(tmp->name, tmp->links[i]) != 0)
@@ -45,6 +56,7 @@ void	moveants(t_hold *node)
 			i++;
 		}
 		tmp = future;
+		moveem(node, tmp->name);
 		// printf("[%s]\n", tmp->name);
 	}
 }

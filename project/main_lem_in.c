@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:31:17 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/27 13:11:41 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/27 18:22:42 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void	printlinks(t_hold *node)
 	{
 		i = 0;
 		
-		if (ft_strcmp(tmp->name, "58") == 0)
-		{
+		// if (ft_strcmp(tmp->name, "58") == 0)
+		// {
 		printf("   Name [%s]\n", tmp->name);
 			while (tmp->links[i] != NULL)
 			{
 				printf("	i %d | links [%s]\n", i, tmp->links[i]);
 				i++;
 			}
-			return ;
-		}
+			// return ;
+		// }
 		tmp = tmp->next;
 	}
 }
@@ -68,9 +68,9 @@ int	main(void)
 	if (ret != 0)
 	{
 		findpath(node);
-		printlist(node);
+		// printlist(node);
 	// 	printf("ants[%d] [%s]\n",node->ants , node->rawlinks);
-		printlinks(node);
+		// printlinks(node);
 	}
 	if (ret != 0)
 		moveants(node);

@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/27 10:53:09 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/27 18:48:28 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/27 18:59:42 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,16 @@ void	moveem(t_hold *node)
 	char	**list;
 	int		count;
 	int		i;
+	int		turn;
 
 	list = ft_split(node->path);
 	free(node->path);
 	count = 1;
+	turn = 1;
 	while (count <=node->ants)
 	{
 		i = 0;
-		while (list[i])
+		while (list[i] && i < turn)
 		{
 			ft_putchar('L');
 			ft_putnbr(count);
@@ -58,8 +60,10 @@ void	moveem(t_hold *node)
 			ft_putchar(' ');
 			i++;
 		}
+		turn++;
 		ft_putchar('\n');
-		count++;
+		if (list[i] == NULL || list[i + 1] == NULL)
+			count++;
 	}
 	deldouble(&list);
 }

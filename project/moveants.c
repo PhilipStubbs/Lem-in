@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/27 10:53:09 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/27 18:23:50 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/27 18:27:09 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	moveants(t_hold *node)
 			i++;
 		}
 		tmp = future;
-		moveem(node, tmp->name);
-		// printf("[%s]\n", tmp->name);
+		// moveem(node, tmp->name);
+		printf("[%s]\n", tmp->name);
 	}
+	
 }

@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 11:22:34 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/27 18:23:00 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/27 18:27:44 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,7 @@ void	setvalues(t_hold *node, t_room *room, int v)
 		}
 		i++;
 	}
-	setvalues(node, future, v);
-
-
-
-
-	// while (room->links[i] != NULL)
-	// {
-	// 	tmp = node->room;
-	// 	while (tmp->next != NULL)
-	// 	{
-	// 		if (ft_strcmp(tmp->name, room->links[i]) == 0 && tmp->v == 0)
-	// 		{
-	// 			if (tmp->v == 0)
-	// 				tmp->v = room->v + 1;
-	// 			// if (tmp->next == NULL && room->links[i + 1] == NULL)
-	// 				setvalues(node, tmp, v +1);
-	// 		}
-	// 		tmp = tmp->next;
-	// 	}
-	// 	i++;
-	// }
+	setvalues(node, future, v + 1);
 }
 
 void	findpath(t_hold *node)

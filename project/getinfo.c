@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:06:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/26 11:17:00 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/27 11:31:45 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		isstart(char *str)
 	return (-1);
 }
 
-void	findants(t_hold *node)
+int		findants(t_hold *node)
 {
 	int		i;
 	char	*ret;
@@ -45,13 +45,14 @@ void	findants(t_hold *node)
 	while (node->rawstr[i])
 	{
 		if (ft_isdigit(node->rawstr[i]) == 0)
-			destroyerror(&node);
+			return (0);
 		i++;
 	}
 	node->ants = atol(node->rawstr);
 	get_next_line(0, &(ret));
 	ft_strcpy(node->rawstr, ret);
 	free(ret);
+	return (1);
 }
 
 void	setstart(t_hold *node)
@@ -169,18 +170,9 @@ void	savelink(t_hold *node)
 	}
 	if (flag == 0 && ft_strcmp(node->rawlinks, "") != 0)
 	{
-		// printf("[%s]\n", node->rawlinks);
-		// tmp = ft_strjoin(node->rawlinks, " ");
-		/*
-			free(node->rawlinks);
-		*/
-		// if (tmp)
-			// free(tmp);
 		tmp = ft_strmerge(node->rawlinks, node->rawstr);
 		free(node->rawlinks);
 		node->rawlinks = tmp;
-		// write(1,"X\n",2); 
-		// node->rawlinks = ft_strjoin(tmp, node->rawstr);
 	}
 }
 
@@ -207,7 +199,8 @@ int		getinfo(t_hold *node)
 	{
 		ret = get_next_line(0, &(node->rawstr));
 		if (count == 0)
-			findants(node);
+			if (findants(node) == 0)
+				return (0);
 		findrooms(node);
 		count++;
 		free(node->rawstr);

@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 14:00:48 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/26 11:18:17 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/27 10:37:05 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ void	connectend(t_hold *node)
 	list->next = enpoint;
 }
 
-void	connectlinks(t_hold *node)
+int		connectlinks(t_hold *node)
 {
 	if (node->ants == 0 || node->start == NULL || node->end == NULL)
-		destroyerror(&node);
+		return (0);
 	connectstart(node);
 	connectend(node);
+	return (1);
 }

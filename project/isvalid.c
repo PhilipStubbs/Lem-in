@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dellst.c                                           :+:      :+:    :+:   */
+/*   isvalid.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/24 09:41:06 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/27 10:58:53 by pstubbs          ###   ########.fr       */
+/*   Created: 2018/07/27 10:21:14 by pstubbs           #+#    #+#             */
+/*   Updated: 2018/07/27 10:40:55 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	dellst(t_room **lst)
-{	
+int		isvalid(t_hold *node)
+{
 	t_room *tmp;
 
-	while ((*lst)->next != NULL)
+	tmp = node->room;
+	while (tmp->next != NULL)
 	{
-		tmp = (*lst);
-		(*lst) = (*lst)->next;
-		free(tmp->name);
-		free(tmp);
+		if (ft_strcmp(tmp->name, node->start->name) == 0)
+		{
+			if (tmp->links[0] == NULL)
+				return (0);
+		}
+		if (ft_strcmp(tmp->name, node->end->name) == 0)
+		{
+			if (tmp->links[0] == NULL)
+				return (0);
+		}
+		tmp = tmp->next;
 	}
-	// tmp = (*lst);
-	// free(tmp->name);
-	// free(tmp);
-	// free((*lst));
+	return (1);
 }

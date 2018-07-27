@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 09:57:56 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/26 16:09:15 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/27 10:34:38 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,13 +118,18 @@ void	setpreviouslinks(int num, int n, char **list, t_room *tmp)
 	tmp->links[num] = NULL;
 }
 
-void	setlinks(t_hold *node)
+int	setlinks(t_hold *node)
 {
 	t_room	*tmp;
 	char	**list;
 	int		num;
 	int		pnum;
 
+	if (listsize(node->room) <= 2)
+	{
+		printf("[HERE]\n");
+		return (0);
+	}
 	list = ft_split(node->rawlinks);
 	tmp = node->room;
 	while (tmp != NULL)
@@ -138,4 +143,5 @@ void	setlinks(t_hold *node)
 	}
 	deldouble(&list);
 	free(tmp);
+	return (1);
 }

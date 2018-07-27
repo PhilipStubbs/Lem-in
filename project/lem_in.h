@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/26 16:11:22 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/27 12:20:34 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,13 @@ void				destroyerror(t_hold **node);
 void				dellst(t_room **lst);
 
 int					getinfo(t_hold *node);
-void				connectlinks(t_hold *node);
-void				setlinks(t_hold *node);
+int					connectlinks(t_hold *node);
+int					setlinks(t_hold *node);
 int					listsize(t_room *lst);
+int					isvalid(t_hold *node);
 
 void				findpath(t_hold *node);
+void				moveants(t_hold *node);
 
 char				*ft_strmerge(char *s1, char *s2);
 void				deldouble(char ***str);

@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:31:17 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/26 17:55:28 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/27 09:16:32 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,14 @@ int	main(void)
 	connectlinks(node);
 	setlinks(node);
 
-	findpath(node);
-	printlist(node);
+	if (isvalid(node) == 0)
+		{
+			ERROR;
+			// destroyerror(node);
+		}
+
+	// findpath(node);
+	// printlist(node);
 		// printf("[%s]\n", node->rawlinks);
 	// printlinks(node);
 

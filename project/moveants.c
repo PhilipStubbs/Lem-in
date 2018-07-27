@@ -6,13 +6,13 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/27 10:53:09 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/27 18:27:09 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/27 18:48:28 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	moveem(t_hold *node, char *str)
+void	creatpath(t_hold *node, char *str)
 {
 	char	*tmp;
 	if (!node->path)
@@ -28,6 +28,42 @@ void	moveem(t_hold *node, char *str)
 	// 	node->ants--;
 }
 
+void	moveantsbody(int *score, t_room **future, t_room *lst)
+{
+	if (lst->v < *score && lst->v != 0)
+	{
+		*score = lst->v;
+		*future = lst;
+	}
+}
+
+void	moveem(t_hold *node)
+{
+	char	**list;
+	int		count;
+	int		i;
+
+	list = ft_split(node->path);
+	free(node->path);
+	count = 1;
+	while (count <=node->ants)
+	{
+		i = 0;
+		while (list[i])
+		{
+			ft_putchar('L');
+			ft_putnbr(count);
+			ft_putchar('-');
+			ft_putstr(list[i]);
+			ft_putchar(' ');
+			i++;
+		}
+		ft_putchar('\n');
+		count++;
+	}
+	deldouble(&list);
+}
+
 void	moveants(t_hold *node)
 {
 	t_room	*tmp;
@@ -37,7 +73,6 @@ void	moveants(t_hold *node)
 	int		i;
 
 	tmp = node->room;
-	
 	while (tmp->v != 1)
 	{
 		i = 0;
@@ -45,19 +80,14 @@ void	moveants(t_hold *node)
 		while (tmp->links[i])
 		{
 			lst = node->room;
-			while (ft_strcmp(lst->name, tmp->links[i]) != 0 && ft_strcmp(tmp->name, tmp->links[i]) != 0)
+			while (ft_strcmp(lst->name, tmp->links[i]) != 0)
 				lst = lst->next;
-			// printf("[%s]\n", l);
-			if (lst->v < score && lst->v != 0 && ft_strcmp(tmp->name, tmp->links[i]) != 0)
-			{
-				score = lst->v;
-				future = lst;
-			}
+			moveantsbody(&score, &future, lst);
 			i++;
 		}
 		tmp = future;
-		// moveem(node, tmp->name);
-		printf("[%s]\n", tmp->name);
+		creatpath(node, tmp->name);
 	}
-	
+	printf("[%s]\n", node->path);
+	moveem(node);
 }

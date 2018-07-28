@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:31:17 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/27 18:22:42 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/28 09:56:13 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,18 @@ void	printlinks(t_hold *node)
 	while (tmp != NULL)
 	{
 		i = 0;
-		
-		// if (ft_strcmp(tmp->name, "58") == 0)
-		// {
-		printf("   Name [%s]\n", tmp->name);
-			while (tmp->links[i] != NULL)
-			{
-				printf("	i %d | links [%s]\n", i, tmp->links[i]);
-				i++;
-			}
-			// return ;
-		// }
+		ft_putchar('\t');
+		ft_putendl(tmp->name);
+		while (tmp->links[i] != NULL)
+		{
+			ft_putstr("	i ");
+			ft_putnbr(i);
+			ft_putstr(" | links [");
+			ft_putstr(tmp->links[i]);
+			ft_putendl("]\n");
+			// printf("	i %d | links [%s]\n", i, tmp->links[i]);
+			i++;
+		}
 		tmp = tmp->next;
 	}
 }
@@ -56,9 +57,7 @@ int	main(void)
 
 	node = malloctime();
 	if ((ret = getinfo(node)) == 0)
-	{
-		destroyerror(&node);
-	}
+		ERROR;
 	if ((ret != 0) && (ret = connectlinks(node)) == 0)
 		ERROR;
 	if ((ret != 0) && (ret = setlinks(node)) == 0)

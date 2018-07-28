@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 11:22:34 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/27 18:27:44 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/28 09:40:36 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,12 @@ void	setvalues(t_hold *node, t_room *room, int v)
 	i = 0;
 	if (node->room->v != 0)
 		return ;
-	// if (room->v == 0)
-	// {
-	// 	room->v = v;
-	// 	v++;
-	// }
 	future = NULL;
 	while (room->links[i])
 	{
 		lst = node->room;
 		while (ft_strcmp(lst->name, room->links[i]) != 0)
-				lst = lst->next;
+			lst = lst->next;
 		if (lst->v == 0)
 		{
 			lst->v = v + 1;

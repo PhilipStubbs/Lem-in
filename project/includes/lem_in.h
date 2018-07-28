@@ -6,15 +6,15 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/27 18:15:55 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/28 10:01:57 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
-# include "libft/libft.h"
-# include <stdio.h>
+# include "../libft/libft.h"
+# include<stdio.h>
 
 # define ERROR ft_putendl_fd("Error", 2);
 
@@ -51,6 +51,11 @@ int					connectlinks(t_hold *node);
 int					setlinks(t_hold *node);
 int					listsize(t_room *lst);
 int					isvalid(t_hold *node);
+int					isroom(char *str);
+void				setroom(t_hold *node);
+int					isstart(char *str);
+void				setstart(t_hold *node);
+void				setend(t_hold *node);
 
 void				findpath(t_hold *node);
 void				moveants(t_hold *node);

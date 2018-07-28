@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   deldouble.c                                        :+:      :+:    :+:   */
+/*   dellst.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/24 09:56:32 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/24 16:54:03 by pstubbs          ###   ########.fr       */
+/*   Created: 2018/07/24 09:41:06 by pstubbs           #+#    #+#             */
+/*   Updated: 2018/07/28 09:39:31 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void deldouble(char ***str)
+void	dellst(t_room **lst)
 {
-	int	i;
+	t_room *tmp;
 
-	i = 0;
-	while (str[0][i] != NULL)
+	while ((*lst)->next != NULL)
 	{
-		i++;
+		tmp = (*lst);
+		(*lst) = (*lst)->next;
+		free(tmp->name);
+		free(tmp);
 	}
-	while (i >= 0)
-	{
-		free(str[0][i--]);
-	}
-	free(*str);
 }

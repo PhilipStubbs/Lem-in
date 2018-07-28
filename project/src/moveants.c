@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/27 10:53:09 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/27 18:59:42 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/28 10:09:43 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	moveem(t_hold *node)
 	turn = 1;
 	while (count <=node->ants)
 	{
-		i = 0;
+		i = count;
 		while (list[i] && i < turn)
 		{
 			ft_putchar('L');

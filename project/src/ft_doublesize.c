@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dellst.c                                           :+:      :+:    :+:   */
+/*   ft_doublesize.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/24 09:41:06 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/27 10:58:53 by pstubbs          ###   ########.fr       */
+/*   Created: 2018/07/26 10:04:47 by pstubbs           #+#    #+#             */
+/*   Updated: 2018/07/28 09:54:29 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	dellst(t_room **lst)
-{	
-	t_room *tmp;
+int		doublesize(char **list)
+{
+	int	size;
 
-	while ((*lst)->next != NULL)
-	{
-		tmp = (*lst);
-		(*lst) = (*lst)->next;
-		free(tmp->name);
-		free(tmp);
-	}
-	// tmp = (*lst);
-	// free(tmp->name);
-	// free(tmp);
-	// free((*lst));
+	size = 0;
+	while (list[size])
+		size++;
+	return (size);
 }

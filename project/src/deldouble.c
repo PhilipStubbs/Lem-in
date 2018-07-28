@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmerge.c                                      :+:      :+:    :+:   */
+/*   deldouble.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/26 07:45:31 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/26 08:02:51 by pstubbs          ###   ########.fr       */
+/*   Created: 2018/07/24 09:56:32 by pstubbs           #+#    #+#             */
+/*   Updated: 2018/07/28 09:39:43 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "lem_in.h"
 
-char	*ft_strmerge(char *s1, char *s2)
+void	deldouble(char ***str)
 {
-	int		len;
-	int		i;
-	int		x;
-	char	*ret;
+	int	i;
 
-	len = ft_strlen(s1) + ft_strlen(s2);
-	ret = (char*)ft_memalloc(sizeof(char) * len + 2);
 	i = 0;
-	x = 0;
-	while (s1[x])
+	while (str[0][i] != NULL)
 	{
-		ret[i++] = s1[x++];
+		i++;
 	}
-	ret[i] = ' ';
-	i++;
-	while (*s2)
+	while (i >= 0)
 	{
-		ret[i++] = *s2++;
+		free(str[0][i--]);
 	}
-	ret[i] = '\0';
-	// free(&s1);
-	return (ret);
+	free(*str);
 }

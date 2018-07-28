@@ -6,16 +6,14 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:51:07 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/27 11:02:43 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/28 09:57:21 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 void	destroy(t_hold **node)
-{	
-	// if ((*node)->rawstr)
-	// 	free((*node)->rawstr);
+{
 	if ((*node)->str)
 		free((*node)->str);
 
@@ -29,8 +27,6 @@ void	destroy(t_hold **node)
 		free((*node)->end->name);
 		free((*node)->end);
 	}
-	
-	// free((*node)->room);
 	free(*node);
 	exit(1);
 }
@@ -53,7 +49,6 @@ void	destroyerror(t_hold **node)
 		free((*node)->end);
 	}
 	free((*node)->rawlinks);
-	// free((*node)->room->name);
 	free((*node)->room);
 	free(*node);
 	ERROR;

@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_doublesize.c                                    :+:      :+:    :+:   */
+/*   ft_strmerge.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/26 10:04:47 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/26 10:05:00 by pstubbs          ###   ########.fr       */
+/*   Created: 2018/07/26 07:45:31 by pstubbs           #+#    #+#             */
+/*   Updated: 2018/07/28 09:54:38 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "lem_in.h"
 
-int		doublesize(char **list)
+char	*ft_strmerge(char *s1, char *s2)
 {
-	int	size;
+	int		len;
+	int		i;
+	int		x;
+	char	*ret;
 
-	size = 0;
-	while (list[size])
-		size++;
-	return (size);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	ret = (char*)ft_memalloc(sizeof(char) * len + 2);
+	i = 0;
+	x = 0;
+	while (s1[x])
+	{
+		ret[i++] = s1[x++];
+	}
+	ret[i] = ' ';
+	i++;
+	while (*s2)
+	{
+		ret[i++] = *s2++;
+	}
+	ret[i] = '\0';
+	return (ret);
 }

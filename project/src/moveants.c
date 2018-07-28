@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/27 10:53:09 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/28 10:09:43 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/28 11:00:27 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,30 +40,44 @@ void	moveantsbody(int *score, t_room **future, t_room *lst)
 void	moveem(t_hold *node)
 {
 	char	**list;
-	int		count;
 	int		i;
+	int		size;
+	int		totalants;
+	int		finishants;
+	int		curant;
 	int		turn;
+	int		cturn;
 
 	list = ft_split(node->path);
 	free(node->path);
-	count = 1;
+	size = doublesize(list);
+
+	/*
+	have max of size turns per a row;
+	*/
+
+	totalants = node->ants;
+	finishants = 0;
 	turn = 1;
-	while (count <=node->ants)
+	while (finishants < node->ants)
 	{
-		i = count;
-		while (list[i] && i < turn)
+		i = 0;
+		curant = finishants + 1;
+		cturn = turn;
+		while ((list[i] || curant < node->ants -1) && cturn > 0 )
 		{
 			ft_putchar('L');
-			ft_putnbr(count);
+			ft_putnbr(curant);
 			ft_putchar('-');
 			ft_putstr(list[i]);
-			ft_putchar(' ');
+			if (ft_strcmp(list[i], node->end->name) == 0)
+				finishants++;
 			i++;
+			curant++;
+			cturn--;
 		}
 		turn++;
 		ft_putchar('\n');
-		if (list[i] == NULL || list[i + 1] == NULL)
-			count++;
 	}
 	deldouble(&list);
 }

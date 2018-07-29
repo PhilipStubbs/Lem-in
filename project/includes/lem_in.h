@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/28 10:01:57 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/29 10:20:38 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,12 @@ void				setend(t_hold *node);
 
 void				findpath(t_hold *node);
 void				moveants(t_hold *node);
+void				writemove(int ant, char *room);
+void				moveem(t_hold *node);
+
 
 char				*ft_strmerge(char *s1, char *s2);
+void				ft_printintarray(int *list, int size);
 void				deldouble(char ***str);
 int					doublesize(char **list);
 

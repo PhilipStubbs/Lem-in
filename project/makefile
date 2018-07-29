@@ -17,6 +17,9 @@ SRC = src/connectlinks.c \
 	src/setlinks.c \
 	src/startandend.c \
 	src/main_lem_in.c \
+	src/writemove.c \
+	src/ft_printintarray.c \
+	src/moveem.c \
 
 OBJ = *.o
 

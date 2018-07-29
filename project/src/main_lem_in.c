@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:31:17 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/29 09:49:55 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/29 10:09:09 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	printlinks(t_hold *node)
 			ft_putstr(" | links [");
 			ft_putstr(tmp->links[i]);
 			ft_putendl("]\n");
-			// printf("	i %d | links [%s]\n", i, tmp->links[i]);
 			i++;
 		}
 		tmp = tmp->next;
@@ -46,7 +45,10 @@ void	printlist(t_hold *node)
 	tmp = node->room;
 	while (tmp != NULL)
 	{
-		printf("name %s | v %d \n", tmp->name, tmp->v);
+		ft_putstr(tmp->name);
+		ft_putstr(" | v ");
+		ft_putnbr(tmp->v);
+		ft_putchar('\n');
 		tmp = tmp->next;
 	}
 }
@@ -67,27 +69,15 @@ int	main(void)
 	if ((ret != 0) && (ret = isvalid(node)) == 0)
 		ERROR;
 	if (ret != 0)
-	{
 		findpath(node);
-		// printlist(node);
-	// 	printf("ants[%d] [%s]\n",node->ants , node->rawlinks);
-		// printlinks(node);
-	}
 	if (ret != 0)
 		moveants(node);
 	tmp = node->room;
-
-
-
-
 	while (tmp != NULL)
 	{
 		deldouble(&(tmp->links));
 		tmp = tmp->next;
 	}
 	tmp = node->room;
-
-
-	
 	destroy(&node);
 }

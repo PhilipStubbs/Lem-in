@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/27 10:53:09 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/28 11:00:27 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/29 08:55:02 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	creatpath(t_hold *node, char *str)
 	free(node->path);
 	node->path = ft_strmerge(tmp, str);
 	free(tmp);
-	// if (ft_strcmp(str, node->end->name) == 0)
-	// 	node->ants--;
 }
 
 void	moveantsbody(int *score, t_room **future, t_room *lst)
@@ -37,48 +35,70 @@ void	moveantsbody(int *score, t_room **future, t_room *lst)
 	}
 }
 
+void	writemove(int ant, char *room)
+{
+	ft_putchar('L');
+	ft_putnbr(ant+1);
+	ft_putchar('-');
+	ft_putstr(room);
+	ft_putchar(' ');
+}
+
+void	printints(int *list, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+		printf("[%d | ", list[i++]);
+	printf("\n");
+}
+
+void	moveembody(t_hold *node, char **list, int *antlist, int size)
+{
+	int	ant;
+	int turns;
+	int	current;
+	int	finishants;
+
+
+	finishants = 0;
+	turns = 1;
+	while (finishants < node->ants)
+	{
+		ant = finishants;
+		current = turns;
+		while (current >= 0)
+		{
+			current--;
+			if(antlist[ant] < size && antlist[ant] <= size)
+			{
+				antlist[ant] = antlist[ant] + 1;
+				if (antlist[ant] == size)
+					finishants++;
+				writemove(ant, list[antlist[ant]-1]);
+			}
+			current--;
+			ant++;
+		}
+		ft_putchar('\n');
+		if (turns <= size)
+			turns++;
+	}
+}
+
 void	moveem(t_hold *node)
 {
 	char	**list;
-	int		i;
+	int		*antlist;
 	int		size;
-	int		totalants;
-	int		finishants;
-	int		curant;
-	int		turn;
-	int		cturn;
-
+	
+	antlist = (int*)ft_memalloc(sizeof(int) * node->ants);
 	list = ft_split(node->path);
 	free(node->path);
 	size = doublesize(list);
-
-	/*
-	have max of size turns per a row;
-	*/
-
-	totalants = node->ants;
-	finishants = 0;
-	turn = 1;
-	while (finishants < node->ants)
-	{
-		i = 0;
-		curant = finishants + 1;
-		cturn = turn;
-		while ((list[i] || curant < node->ants -1) && cturn > 0 )
-		{
-			ft_putchar('L');
-			ft_putnbr(curant);
-			ft_putchar('-');
-			ft_putstr(list[i]);
-			if (ft_strcmp(list[i], node->end->name) == 0)
-				finishants++;
-			i++;
-			curant++;
-			cturn--;
-		}
-		turn++;
-		ft_putchar('\n');
-	}
+	moveembody(node, list, antlist, size);
+	free(antlist);
 	deldouble(&list);
 }
 
@@ -106,6 +126,48 @@ void	moveants(t_hold *node)
 		tmp = future;
 		creatpath(node, tmp->name);
 	}
-	printf("[%s]\n", node->path);
+	printf("Path[%s]\n", node->path);
 	moveem(node);
 }
+
+
+
+	// while (finishants < node->ants)
+	// {
+	// 	i = 0;
+	// 	// ant = finishants;
+	// 	ant = 0;
+	// 	current = turns;
+	// 	printints(antlist, node->ants - deletethis);
+	// 	while (current > 0 && list[i])
+	// 	{
+	// 		if (antlist[ant - 1] == size && antlist[ant] + 1 == size)
+	// 		{
+	// 			writemove(ant, list[i]);
+	// 			antlist[ant] = size;
+	// 		}
+	// 		// if ((ant == 0 || antlist[ant - 1] > (antlist[ant] + 1)))
+	// 		// {
+	// 		if (antlist[ant] <= size)
+	// 		{
+	// 			if (ant == 0 && antlist[ant] >= antlist[ant + 1])
+	// 			{
+	// 				antlist[ant] = i;
+	// 				writemove(ant, list[antlist[ant]]);
+	// 			}
+	// 			if (antlist[ant] < antlist[ant - 1] + 1)
+	// 			{
+	// 				antlist[ant] = i;
+	// 				writemove(ant, list[antlist[ant]]);
+	// 			}
+	// 		}
+	// 		// }
+	// 		if (ft_strcmp(node->end->name, list[i]) == 0)
+	// 			finishants++;
+	// 		// if (antlist[finishants] == size)
+	// 		// 	finishants++;
+	// 		i++;
+	// 		if (antlist[ant] > antlist[ant+1])
+	// 			ant++;
+	// 		current--;
+	// 	}

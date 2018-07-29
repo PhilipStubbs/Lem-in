@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/27 10:53:09 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/29 08:55:02 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/29 09:57:41 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,22 @@ void	printints(int *list, int size)
 	printf("\n");
 }
 
+int		finished(int *list, int ants, int max)
+{
+	int	ret;
+	int	i;
+
+	ret = 0;
+	i = 0;
+	while (i < ants)
+	{
+		if (list[i] == max)
+			ret++;
+		i++;
+	}
+	return (ret);
+}
+
 void	moveembody(t_hold *node, char **list, int *antlist, int size)
 {
 	int	ant;
@@ -61,29 +77,33 @@ void	moveembody(t_hold *node, char **list, int *antlist, int size)
 	int	current;
 	int	finishants;
 
-
 	finishants = 0;
 	turns = 1;
 	while (finishants < node->ants)
 	{
 		ant = finishants;
 		current = turns;
-		while (current >= 0)
+		while (current > 0 && ant < node->ants)
 		{
 			current--;
-			if(antlist[ant] < size && antlist[ant] <= size)
+			if(antlist[ant] < size  && current > 0)
 			{
 				antlist[ant] = antlist[ant] + 1;
-				if (antlist[ant] == size)
-					finishants++;
 				writemove(ant, list[antlist[ant]-1]);
+				// if (antlist[ant] == size)
+				// 	finishants++;
 			}
-			current--;
 			ant++;
 		}
 		ft_putchar('\n');
 		if (turns <= size)
 			turns++;
+		finishants = finished(antlist, node->ants, size);
+		// if (fins)
+		// printf("[finished %d]\n", finishants);
+
+		// printints(antlist, node->ants);
+
 	}
 }
 

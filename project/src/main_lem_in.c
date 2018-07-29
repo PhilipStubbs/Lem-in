@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:31:17 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/28 09:56:13 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/29 09:49:55 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ void	printlinks(t_hold *node)
 	{
 		i = 0;
 		ft_putchar('\t');
-		ft_putendl(tmp->name);
+		ft_putstr("Name[");
+		ft_putstr(tmp->name);
+		ft_putendl("]");
 		while (tmp->links[i] != NULL)
 		{
 			ft_putstr("	i ");

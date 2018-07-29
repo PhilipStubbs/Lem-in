@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:31:17 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/29 10:09:09 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/29 10:38:20 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ int	main(void)
 	tmp = node->room;
 	while (tmp != NULL)
 	{
-		deldouble(&(tmp->links));
+		if (tmp->links)
+			deldouble(&(tmp->links));
 		tmp = tmp->next;
 	}
-	tmp = node->room;
 	destroy(&node);
 }

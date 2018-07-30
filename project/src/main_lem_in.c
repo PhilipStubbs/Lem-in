@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:31:17 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/29 16:59:01 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/30 08:20:48 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ void	printlist(t_hold *node)
 	}
 }
 
-int	main(void)
+int		main(void)
 {
-	t_hold *node;
-	t_room *tmp;
+	t_hold	*node;
+	t_room	*tmp;
 	int		ret;
 
 	node = malloctime();

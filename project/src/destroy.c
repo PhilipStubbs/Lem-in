@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:51:07 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/29 16:46:56 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/30 08:28:31 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	destroy(t_hold **node)
 {
 	if ((*node)->str)
 		free((*node)->str);
-
 	if ((*node)->start)
 	{
 		free((*node)->start->name);
@@ -27,7 +26,6 @@ void	destroy(t_hold **node)
 		free((*node)->end->name);
 		free((*node)->end);
 	}
-	// free(*node);
 	exit(1);
 }
 
@@ -37,7 +35,6 @@ void	destroyerror(t_hold **node)
 		free((*node)->rawstr);
 	if ((*node)->str)
 		free((*node)->str);
-
 	if ((*node)->start)
 	{
 		free((*node)->start->name);
@@ -50,7 +47,6 @@ void	destroyerror(t_hold **node)
 	}
 	free((*node)->rawlinks);
 	free((*node)->room);
-	// free(*node);
 	ERROR;
 	exit(1);
 }

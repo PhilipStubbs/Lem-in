@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/27 10:53:09 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/29 10:21:48 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/30 08:29:23 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	creatpath(t_hold *node, char *str)
 {
 	char	*tmp;
+
 	if (!node->path)
 	{
 		node->path = ft_strdup(str);

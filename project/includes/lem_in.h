@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/29 16:58:59 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/30 08:27:59 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LEM_IN_H
 
 # include "../libft/libft.h"
-# include<stdio.h>
 
 # define ERROR ft_putendl_fd("Error", 2);
 
@@ -62,11 +61,8 @@ void				moveants(t_hold *node);
 void				writemove(int ant, char *room);
 void				moveem(t_hold *node);
 
-
 char				*ft_strmerge(char *s1, char *s2);
 void				ft_printintarray(int *list, int size);
 void				deldouble(char ***str);
 int					doublesize(char **list);
-
-
 #endif

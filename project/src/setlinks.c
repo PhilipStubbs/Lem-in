@@ -6,13 +6,13 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 09:57:56 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/27 10:34:38 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/30 08:31:49 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	setforwardlinks(int num, char **list, t_room *tmp)
+int			setforwardlinks(int num, char **list, t_room *tmp)
 {
 	int		i;
 	int		n;
@@ -27,6 +27,9 @@ void	setforwardlinks(int num, char **list, t_room *tmp)
 			i = 0;
 			while (list[l][i] != '-' && list[l][i] != '\0')
 				i++;
+			if (ft_isdigit(list[l][i + 1]) != 1 &&
+			ft_isalpha(list[l][i + 1]) != 1)
+				return (0);
 			if (ft_strncmp(tmp->name, list[l], i) == 0)
 			{
 				tmp->links[n] = ft_strsub(list[l], i + 1, ft_strlen(list[l]));
@@ -35,9 +38,10 @@ void	setforwardlinks(int num, char **list, t_room *tmp)
 			l++;
 		}
 	}
+	return (1);
 }
 
-int		matchingforwardlink(char *name, char **list)
+int			matchingforwardlink(char *name, char **list)
 {
 	int		count;
 	int		i;
@@ -64,7 +68,7 @@ int		matchingforwardlink(char *name, char **list)
 	return (count);
 }
 
-int		matchingpreviouslink(char *name, char **list)
+int			matchingpreviouslink(char *name, char **list)
 {
 	int		count;
 	int		i;
@@ -93,7 +97,7 @@ int		matchingpreviouslink(char *name, char **list)
 	return (count);
 }
 
-void	setpreviouslinks(int num, int n, char **list, t_room *tmp)
+void		setpreviouslinks(int num, int n, char **list, t_room *tmp)
 {
 	int		i;
 	int		l;
@@ -118,7 +122,7 @@ void	setpreviouslinks(int num, int n, char **list, t_room *tmp)
 	tmp->links[num] = NULL;
 }
 
-int	setlinks(t_hold *node)
+int			setlinks(t_hold *node)
 {
 	t_room	*tmp;
 	char	**list;
@@ -126,10 +130,7 @@ int	setlinks(t_hold *node)
 	int		pnum;
 
 	if (listsize(node->room) <= 2)
-	{
-		printf("[HERE]\n");
 		return (0);
-	}
 	list = ft_split(node->rawlinks);
 	tmp = node->room;
 	while (tmp != NULL)
@@ -137,11 +138,14 @@ int	setlinks(t_hold *node)
 		num = matchingforwardlink(tmp->name, list);
 		pnum = matchingpreviouslink(tmp->name, list);
 		tmp->links = (char**)ft_memalloc(sizeof(char*) * (num + pnum + 1));
-		setforwardlinks(num, list, tmp);
+		if (setforwardlinks(num, list, tmp) == 0)
+			return (0);
 		setpreviouslinks(num + pnum, num, list, tmp);
 		tmp = tmp->next;
 	}
 	deldouble(&list);
 	free(tmp);
+	if (node->room->links[0] == NULL)
+		return (0);
 	return (1);
 }

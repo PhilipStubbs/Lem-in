@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:06:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/29 16:58:56 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/30 08:29:07 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int		findants(t_hold *node)
 		i++;
 	}
 	node->ants = atol(node->rawstr);
+	if (node->ants <= 0)
+		return (0);
 	get_next_line(0, &(ret));
 	ft_strcpy(node->rawstr, ret);
 	free(ret);
@@ -36,7 +38,6 @@ int		islink(char *str)
 	int	i;
 
 	i = 0;
-
 	while (str[i])
 	{
 		if (str[i] == '-')

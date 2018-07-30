@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 10:18:12 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/07/29 10:27:19 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/07/30 08:26:48 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ int		finished(int *list, int ants, int max)
 
 int		moveembodybody(int *antlist, int ant, int size, int current)
 {
-	if(antlist[ant] < size  && current > 0)
-		{
-			antlist[ant] = antlist[ant] + 1;
-			return (1);
-		}
+	if (antlist[ant] < size && current > 0)
+	{
+		antlist[ant] = antlist[ant] + 1;
+		return (1);
+	}
 	return (0);
 }
 
@@ -55,7 +55,7 @@ void	moveembody(t_hold *node, char **list, int *antlist, int size)
 		{
 			current--;
 			if (moveembodybody(antlist, ant, size, current) == 1)
-				writemove(ant, list[antlist[ant]-1]);
+				writemove(ant, list[antlist[ant] - 1]);
 			ant++;
 		}
 		if (turns <= size)
@@ -71,7 +71,7 @@ void	moveem(t_hold *node)
 	char	**list;
 	int		*antlist;
 	int		size;
-	
+
 	antlist = (int*)ft_memalloc(sizeof(int) * node->ants);
 	list = ft_split(node->path);
 	free(node->path);
